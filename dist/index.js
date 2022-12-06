@@ -16,14 +16,14 @@ let aCar = new Car("black", 8);
 console.log(aCar);
 class Ferry {
     constructor(thecolor, thepassengerCount) {
-        this.car = [];
+        this.car = new Array();
         this.car = [];
         this.colour = thecolor;
         this.passengerCount = thepassengerCount;
     }
-    board() {
+    board(cars) {
         if (this.car.length != 54) {
-            this.car.push();
+            this.car.push(cars);
             return "accepted";
         }
         else {
@@ -31,12 +31,25 @@ class Ferry {
         }
     }
     getPeopleCount() {
-        if (this.car.length) {
-            return this.passengerCount++;
+        let counted = 0;
+        for (let i = 0; i < this.car.length; i++) {
+            counted += this.car[i].passengerCount;
         }
+        return counted;
+        // if(this.car.length){
+        //   return this.passengerCount++
+        // }
     }
     getCarCount() {
         return this.car.length;
     }
 }
 exports.Ferry = Ferry;
+let bmw = new Car("blue", 5);
+let suzuki = new Car("red", 5);
+let faririr = new Ferry("green", 3);
+faririr.board(bmw);
+faririr.board(suzuki);
+console.log(faririr.getCarCount());
+console.log(faririr.getPeopleCount());
+//get people

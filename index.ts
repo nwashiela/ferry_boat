@@ -24,13 +24,14 @@ export default class Car implements theCar {
   }
 
 let aCar = new Car("black", 8)
+
 // aCar.board()
 console.log(aCar);
 
 
 
 export class Ferry implements theCar {
-  car = []
+  car: Array<theCar> = new Array();
   public  colour: string ;
   public  passengerCount: number ;
 
@@ -40,9 +41,9 @@ export class Ferry implements theCar {
     this.passengerCount = thepassengerCount;
 }
 
-board(): any {
+board(cars : theCar ): string {
   if(this.car.length != 54){
-    this.car.push()
+    this.car.push(cars)
     return "accepted"
   }else{
     return "rejected"
@@ -50,16 +51,36 @@ board(): any {
 
 }
 
-getPeopleCount(){
-  if(this.car.length){
-    return this.passengerCount++
-  }
+getPeopleCount(): number{
+
+  let counted = 0
+for(let i =0; i < this.car.length; i++){
+  counted += this.car[i].passengerCount 
+
+}
+return counted
+
+  // if(this.car.length){
+  //   return this.passengerCount++
+  // }
 
 }
 
 getCarCount(){
 return this.car.length
 }
+
+
 }
+let bmw = new Car("blue", 5)
+let suzuki = new Car("red",5)
 
 
+let faririr = new Ferry("green", 3)
+
+faririr.board(bmw)
+faririr.board(suzuki)
+console.log(faririr.getCarCount())
+console.log(faririr.getPeopleCount())
+
+//get people

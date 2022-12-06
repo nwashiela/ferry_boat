@@ -1,0 +1,19 @@
+{
+  "name": "ferry-boat",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "nyc mocha"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nyc": "^15.1.0"
+  },
+  "dependencies": {
+    "ts-node": "^10.9.1",
+    "tsc-node": "^0.0.3"
+  }
+}

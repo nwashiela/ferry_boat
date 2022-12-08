@@ -30,28 +30,27 @@ console.log(aCar);
 
 
 export class Ferry  {
-  car = new Array();
-  // farry = new Array();
+  // car = new Array();
+  
   public  people_count: number ;
   public  car_count: number ;
   private people: number = 0
   private cars: number = 0
 
   constructor(countP: number, countCar: number) {
-    this.car = []
-    // this.farry = []
+    // this.car = []
     this.people_count = countP;
     this.car_count = countCar;
 }
 
-board(car : theCar ): string{
+board(carr : theCar ): string{
   //check if true / not false
 const spaceForCars = this.cars+1  <= this.car_count
-const spaceForPeople = this.people + car.passengerCount <= this.people_count  
+const spaceForPeople = this.people + carr.passengerCount <= this.people_count  
 
 console.log(spaceForPeople,spaceForCars)
 if(spaceForCars && spaceForPeople){
-  this.people += car.passengerCount;
+  this.people += carr.passengerCount;
   this.cars++
 
   return "accepted"
@@ -59,33 +58,24 @@ if(spaceForCars && spaceForPeople){
 return "rejected"
 }
 
- // if(this.car.length != 7){
-  //   this.car.push(cars)
-  //   // this.farry.push(cars)
-  //   return "accepted"
-  // }else if(this.car.length != 7){
-  //   return "cant get into Ferry"
-  // }
-  // return "rejected"
-
 getPeopleCount(): number{
+return this.people
+//   let counted = 0
+// for(let i =0; i < this.car.length; i++){
+//   counted += this.car[i].passengerCount 
 
-  let counted = 0
-for(let i =0; i < this.car.length; i++){
-  counted += this.car[i].passengerCount 
-
-}
-return counted
+// }
+// return counted
 }
 
 getCarCount(): number{
-return this.car.length
+return this.car_count
 }
 }
 
 const faririr = new Ferry(25, 4)
 
-const bmw = new Car("blue", 3)
+const bmw = new Car("blue", 9)
 
 
 faririr.board(bmw)
@@ -93,6 +83,10 @@ faririr.board(bmw)
 faririr.board(bmw)
 
 console.log(faririr.board(bmw))
+
+console.log(faririr.getCarCount())
+console.log(faririr.getPeopleCount())
+
 // console.log(faririr.getCarCount())
 // console.log(faririr.getPeopleCount())
 

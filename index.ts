@@ -8,7 +8,7 @@ interface theCar{
 //   board(): string;
 // }
 
-export default class Car implements theCar {
+export default class Car  {
     public readonly colour: string ;
     public readonly passengerCount: number ;
    
@@ -29,27 +29,44 @@ let aCar = new Car("black", 8)
 console.log(aCar);
 
 
+export class Ferry  {
+  car = new Array();
+  // farry = new Array();
+  public  people_count: number ;
+  public  car_count: number ;
+  private people: number = 0
+  private cars: number = 0
 
-export class Ferry implements theCar {
-  car: Array<theCar> = new Array();
-  public  colour: string ;
-  public  passengerCount: number ;
-
-  constructor(thecolor: string, thepassengerCount: number) {
+  constructor(countP: number, countCar: number) {
     this.car = []
-    this.colour = thecolor;
-    this.passengerCount = thepassengerCount;
+    // this.farry = []
+    this.people_count = countP;
+    this.car_count = countCar;
 }
 
-board(cars : theCar ): string {
-  if(this.car.length != 54){
-    this.car.push(cars)
-    return "accepted"
-  }else{
-    return "rejected"
-  }
+board(car : theCar ): string{
+  //check if true / not false
+const spaceForCars = this.cars+1  <= this.car_count
+const spaceForPeople = this.people + car.passengerCount <= this.people_count  
 
+console.log(spaceForPeople,spaceForCars)
+if(spaceForCars && spaceForPeople){
+  this.people += car.passengerCount;
+  this.cars++
+
+  return "accepted"
+} 
+return "rejected"
 }
+
+ // if(this.car.length != 7){
+  //   this.car.push(cars)
+  //   // this.farry.push(cars)
+  //   return "accepted"
+  // }else if(this.car.length != 7){
+  //   return "cant get into Ferry"
+  // }
+  // return "rejected"
 
 getPeopleCount(): number{
 
@@ -59,28 +76,33 @@ for(let i =0; i < this.car.length; i++){
 
 }
 return counted
-
-  // if(this.car.length){
-  //   return this.passengerCount++
-  // }
-
 }
 
-getCarCount(){
+getCarCount(): number{
 return this.car.length
 }
-
-
 }
-let bmw = new Car("blue", 5)
-let suzuki = new Car("red",5)
 
+const faririr = new Ferry(25, 4)
 
-let faririr = new Ferry("green", 3)
+const bmw = new Car("blue", 3)
+
 
 faririr.board(bmw)
-faririr.board(suzuki)
-console.log(faririr.getCarCount())
-console.log(faririr.getPeopleCount())
+faririr.board(bmw)
+faririr.board(bmw)
 
-//get people
+console.log(faririr.board(bmw))
+// console.log(faririr.getCarCount())
+// console.log(faririr.getPeopleCount())
+
+// let suzuki = new Car("red",5) 
+// let lasiz = new Car("red",5) 
+
+// faririr.board(suzuki)
+// faririr.board(lasiz)
+
+// console.log(faririr.getCar_count())
+// console.log(faririr.getPeopleCount())
+
+// //get people
